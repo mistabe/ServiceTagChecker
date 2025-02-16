@@ -1,11 +1,20 @@
+"""
+Parses current service tags from MS and informs the user 
+where in the service tags the IP address exists
+"""
 #!/usr/bin/env python
 
 import json
+import sys
 import ipaddress
+from datetime import datetime
 
 
 def jsonfiledate():
-    from datetime import datetime
+    """
+    Gets human readable date time of the Service Tags
+    JSON file to be displayed on parsing.
+    """
 
     # Your input string
     filename = "ServiceTags_Public_20250203.json"
@@ -24,38 +33,49 @@ def jsonfiledate():
 
 
 def loadjson():
+    """
+    Loads Service Tags JSON file from filesystem
+    """
     st_file = "ServiceTags_Public_20250203.json"
 
-    with open(st_file, mode="r") as file:
+    with open(st_file, mode="r", encoding="us-ascii") as file:
         output = json.load(file)
     return output
 
 
 def validate_ipaddress(address):
+    """
+    Checks if the input provided is even a valid
+    IP address
+    """
     try:
         ipaddress.ip_address(address)
         print("The address", address, "is valid")
     except ValueError:
         print("The address", address, "is invalid")
-        exit(1)
+        sys.exit(1)
 
 
 def is_in_prefix(address_to_check, servicetag_prefix):
+    """
+    Checks if IP address provided is in any Service Tags
+    """
     if ipaddress.ip_address(address_to_check) in ipaddress.ip_network(
         servicetag_prefix
     ):
         print("Present in prefix:", servicetag_prefix, end=" ")
         return address_to_check
-    else:
-        pass
 
 
 def main():
+    """
+    Main application
+    """
     userinput = str(input("Please enter the IP address to be queried: "))
     validate_ipaddress(userinput)
     jsonfiledate()
     servicetags = loadjson()
-    matches = []
+    # matches = []
     for tag in servicetags["values"]:
         # print(tag["properties"])
         for addressprefix in tag["properties"]["addressPrefixes"]:
