@@ -1,7 +1,8 @@
 """
-Parses current service tags from MS and informs the user 
+Parses current service tags from MS and informs the user
 where in the service tags the IP address exists
 """
+
 #!/usr/bin/env python
 
 import json
@@ -65,6 +66,24 @@ def is_in_prefix(address_to_check, servicetag_prefix):
     ):
         print("Present in prefix:", servicetag_prefix, end=" ")
         return address_to_check
+
+
+def resolve_ip(flask_query):
+    """
+    Takes input from the Flask app and returns a list
+    """
+    validate_ipaddress(flask_query)
+    jsonfiledate()
+    servicetags = loadjson()
+    matches = []
+    for tag in servicetags["values"]:
+        # print(tag["properties"])
+        for addressprefix in tag["properties"]["addressPrefixes"]:
+            if is_in_prefix(flask_query, addressprefix):
+                hit = (f"in the ServiceTag:", tag["name"])
+                hit = str(hit)
+                matches.extend(hit)
+    return matches
 
 
 def main():
