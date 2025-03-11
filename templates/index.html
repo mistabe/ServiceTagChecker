@@ -6,11 +6,11 @@
     <title>Input Form</title>
 </head>
 <body>
-    <h1>Enter a Value</h1>
+    <h1>Azure Service Tag IP address checker</h1>
     <form method="POST">
-        <label for="user_input">Input:</label>
+        <label for="user_input">Enter IPv4 or IPv6 address:</label>
         <input type="text" id="user_input" name="user_input">
-        <button type="submit">Submit</button>
+        <button type="submit">Check</button>
     </form>
 
     {% if result is not none %}
