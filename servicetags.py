@@ -57,14 +57,14 @@ def validate_ipaddress(address):
         sys.exit(1)
 
 
-def is_in_prefix(address_to_check, servicetag_prefix):
+def is_in_prefix(address_to_check, addressprefix):
     """
     Checks if IP address provided is in any Service Tags
     """
     if ipaddress.ip_address(address_to_check) in ipaddress.ip_network(
-        servicetag_prefix
+        addressprefix
     ):
-        print("Present in prefix:", servicetag_prefix, end=" ")
+        print("Present in prefix:", addressprefix, end=" ")
         return address_to_check
 
 
