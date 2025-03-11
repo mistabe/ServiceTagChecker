@@ -76,7 +76,7 @@ def resolve_ip(flask_query):
     jsonfiledate()
     servicetags = loadjson()
     matches = []
-    
+
     for tag in servicetags["values"]:
         for addressprefix in tag["properties"]["addressPrefixes"]:
             if is_in_prefix(flask_query, addressprefix):
@@ -84,7 +84,6 @@ def resolve_ip(flask_query):
                 matches.append(hit)
 
     return matches
-
 
 
 def main():
@@ -104,7 +103,8 @@ def main():
 
 
 # Could do with a positive negative if there's no results found
-# Defintely need a dynamic retrieval of tags if the current JSON file is > 6 days old
+# Defintely need a dynamic retrieval of tags if the current JSON
+# file is > 6 days old
 
 if __name__ == "__main__":
     main()
