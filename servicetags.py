@@ -66,6 +66,7 @@ def is_in_prefix(address_to_check, addressprefix):
     ):
         print("Present in prefix:", addressprefix, end=" ")
         return address_to_check
+    return None
 
 
 def resolve_ip(flask_query):
