@@ -98,7 +98,6 @@ def main():
     for tag in servicetags["values"]:
         # print(tag["properties"])
         for addressprefix in tag["properties"]["addressPrefixes"]:
-            print(addressprefix)
             if is_in_prefix(userinput, addressprefix):
                 print("in the ServiceTag:", tag["name"])
 
