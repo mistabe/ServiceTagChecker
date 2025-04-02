@@ -37,7 +37,7 @@ def loadjson():
     """
     Loads Service Tags JSON file from filesystem
     """
-    st_file = "ServiceTags_Public_20250303.json"
+    st_file = "ServiceTags_Public_20250331.json"
 
     with open(st_file, mode="r", encoding="us-ascii") as file:
         output = json.load(file)
