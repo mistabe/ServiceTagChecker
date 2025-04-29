@@ -18,7 +18,7 @@ def jsonfiledate():
     """
 
     # Your input string
-    filename = "ServiceTags_Public_20250203.json"
+    filename = "ServiceTags_Public_20250421.json"
 
     # Extract the date part (assuming the date is always in the same position)
     date_str = filename.split("_")[2].split(".")[0]
