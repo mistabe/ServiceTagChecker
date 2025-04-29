@@ -37,7 +37,7 @@ def loadjson():
     """
     Loads Service Tags JSON file from filesystem
     """
-    st_file = "ServiceTags_Public_20250303.json"
+    st_file = "ServiceTags_Public_20250421.json"
 
     with open(st_file, mode="r", encoding="us-ascii") as file:
         output = json.load(file)
@@ -61,9 +61,7 @@ def is_in_prefix(address_to_check, addressprefix):
     """
     Checks if IP address provided is in any Service Tags
     """
-    if ipaddress.ip_address(address_to_check) in ipaddress.ip_network(
-        addressprefix
-    ):
+    if ipaddress.ip_address(address_to_check) in ipaddress.ip_network(addressprefix):
         print("Present in prefix:", addressprefix, end=" ")
         return address_to_check
 
