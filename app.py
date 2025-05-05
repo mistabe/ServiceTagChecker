@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+
 from servicetags import resolve_ip
 
 app = Flask(__name__)

@@ -5,9 +5,9 @@ where in the service tags the IP address exists
 
 #!/usr/bin/env python
 
+import ipaddress
 import json
 import sys
-import ipaddress
 from datetime import datetime
 
 
