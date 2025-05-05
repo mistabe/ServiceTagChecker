@@ -3,6 +3,7 @@ Runs the flask app for the servicetags checker application
 """
 
 from flask import Flask, render_template, request
+
 from servicetags import resolve_ip
 
 app = Flask(__name__)

@@ -4,11 +4,9 @@ def API_Read_Safe(url, timeout=5, attempts=3):
     tries = 0
 
     while tries < attempts:
-
         tries += 1
 
         try:
-
             # read target URL
 
             response = requests.get(url, headers=headers, timeout=timeout)
@@ -16,7 +14,6 @@ def API_Read_Safe(url, timeout=5, attempts=3):
             # if successful, return the response
 
             if response.ok:
-
                 print("Completed successfully")
 
                 return response
@@ -28,13 +25,10 @@ def API_Read_Safe(url, timeout=5, attempts=3):
             # - retry
 
             if response.status_code == 429:
-
                 try:
-
                     retry_after = int(response.headers.get("Retry-After"))
 
                 except Exception:
-
                     retry_after = 1
 
                 print(f"Retry after {retry_after} seconds")
@@ -52,7 +46,6 @@ def API_Read_Safe(url, timeout=5, attempts=3):
         ## if timeout error, retry. If any other error, leave it unhandled
 
         except requests.exceptions.ConnectTimeout:
-
             print("Timeout, retry")
 
             continue
