@@ -1,15 +1,15 @@
-import unittest
-import json
 import ipaddress
+import json
+import unittest
 from datetime import datetime
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open, patch
 
 from servicetags import (
+    is_in_prefix,
     jsonfiledate,
     loadjson,
-    validate_ipaddress,
-    is_in_prefix,
     resolve_ip,
+    validate_ipaddress,
 )
 
 
