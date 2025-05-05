@@ -5,9 +5,9 @@ where in the service tags the IP address exists
 
 #!/usr/bin/env python
 
+import ipaddress
 import json
 import sys
-import ipaddress
 from datetime import datetime
 
 
@@ -18,7 +18,7 @@ def jsonfiledate():
     """
 
     # Your input string
-    filename = "ServiceTags_Public_20250203.json"
+    filename = "ServiceTags_Public_20250421.json"
 
     # Extract the date part (assuming the date is always in the same position)
     date_str = filename.split("_")[2].split(".")[0]
@@ -37,7 +37,7 @@ def loadjson():
     """
     Loads Service Tags JSON file from filesystem
     """
-    st_file = "ServiceTags_Public_20250303.json"
+    st_file = "ServiceTags_Public_20250421.json"
 
     with open(st_file, mode="r", encoding="us-ascii") as file:
         output = json.load(file)
@@ -61,9 +61,7 @@ def is_in_prefix(address_to_check, addressprefix):
     """
     Checks if IP address provided is in any Service Tags
     """
-    if ipaddress.ip_address(address_to_check) in ipaddress.ip_network(
-        addressprefix
-    ):
+    if ipaddress.ip_address(address_to_check) in ipaddress.ip_network(addressprefix):
         print("Present in prefix:", addressprefix, end=" ")
         return address_to_check
 
